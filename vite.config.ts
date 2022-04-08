@@ -27,7 +27,16 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         plugins: [],
       },
+      // terserOptions: {
+      //   compress: {
+      //     drop_console: env.VITE_BUILD_DROP_CONSOLE,
+      //   },
+      // },
       sourcemap: env.VITE_BUILD_SOURCEMAP,
+    },
+    esbuild: {
+      // 移除console; 只会在build下去除
+      drop: [(env.VITE_BUILD_DROP_CONSOLE && 'console') || undefined],
     },
     resolve: {
       alias: {
