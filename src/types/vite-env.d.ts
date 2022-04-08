@@ -13,9 +13,11 @@ declare global {
     // vite config的base
     readonly VITE_BASE_PATH: string;
     // 移除console.log
-    readonly VITE_BUILD_DROP_CONSOLE: boolean;
+    readonly VITE_BUILD_DROP_CONSOLE: 'true' | void;
     // 移除debugger
-    readonly VITE_BUILD_DROP_DEBUGGER: boolean;
+    readonly VITE_BUILD_DROP_DEBUGGER: 'true' | void;
+    // sourcemap
+    readonly VITE_SOURCEMAP: 'true' | void;
   }
 
   interface ImportMeta {

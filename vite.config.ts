@@ -32,13 +32,14 @@ export default defineConfig(({ mode }) => {
       //     drop_console: env.VITE_BUILD_DROP_CONSOLE,
       //   },
       // },
+      sourcemap: env.VITE_SOURCEMAP === 'true',
     },
     esbuild: {
       // 移除console, debugger; 只会在build下去除
       drop: (() => {
         const drop: Array<'console' | 'debugger'> = [];
-        env.VITE_BUILD_DROP_CONSOLE && drop.push('console');
-        env.VITE_BUILD_DROP_DEBUGGER && drop.push('debugger');
+        env.VITE_BUILD_DROP_CONSOLE === 'true' && drop.push('console');
+        env.VITE_BUILD_DROP_DEBUGGER === 'true' && drop.push('debugger');
         return drop;
       })(),
     },
