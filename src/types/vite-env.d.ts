@@ -15,6 +15,8 @@ declare global {
     readonly VITE_BUILD_SOURCEMAP: boolean;
     // 移除console.log
     readonly VITE_BUILD_DROP_CONSOLE: boolean;
+    // 移除debugger
+    readonly VITE_BUILD_DROP_DEBUGGER: boolean;
   }
 
   interface ImportMeta {

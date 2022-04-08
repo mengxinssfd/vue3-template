@@ -35,8 +35,11 @@ export default defineConfig(({ mode }) => {
       sourcemap: env.VITE_BUILD_SOURCEMAP,
     },
     esbuild: {
-      // 移除console; 只会在build下去除
-      drop: [(env.VITE_BUILD_DROP_CONSOLE && 'console') || undefined],
+      // 移除console, debugger; 只会在build下去除
+      drop: [
+        (env.VITE_BUILD_DROP_CONSOLE && 'console') || undefined,
+        (env.VITE_BUILD_DROP_DEBUGGER && 'debugger') || undefined,
+      ],
     },
     resolve: {
       alias: {
