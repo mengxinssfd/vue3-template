@@ -32,7 +32,6 @@ export default defineConfig(({ mode }) => {
       //     drop_console: env.VITE_BUILD_DROP_CONSOLE,
       //   },
       // },
-      sourcemap: env.VITE_BUILD_SOURCEMAP,
     },
     esbuild: {
       // 移除console, debugger; 只会在build下去除
