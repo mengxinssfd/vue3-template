@@ -36,10 +36,12 @@ export default defineConfig(({ mode }) => {
     },
     esbuild: {
       // 移除console, debugger; 只会在build下去除
-      drop: [
-        (env.VITE_BUILD_DROP_CONSOLE && 'console') || undefined,
-        (env.VITE_BUILD_DROP_DEBUGGER && 'debugger') || undefined,
-      ],
+      drop: (() => {
+        const drop: Array<'console' | 'debugger'> = [];
+        env.VITE_BUILD_DROP_CONSOLE && drop.push('console');
+        env.VITE_BUILD_DROP_DEBUGGER && drop.push('debugger');
+        return drop;
+      })(),
     },
     resolve: {
       alias: {
