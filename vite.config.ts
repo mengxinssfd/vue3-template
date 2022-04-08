@@ -2,6 +2,7 @@ import { defineConfig, loadEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { cdnHooks } from './config/cdn';
 import { createHtmlPlugin as html } from 'vite-plugin-html';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -26,7 +27,26 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         plugins: [],
       },
-      sourcemap: env.VITE_BUILD_SOURCEMAP,
+      // terserOptions: {
+      //   compress: {
+      //     drop_console: env.VITE_BUILD_DROP_CONSOLE,
+      //   },
+      // },
+      sourcemap: env.VITE_SOURCEMAP === 'true',
+    },
+    esbuild: {
+      // 移除console, debugger; 只会在build下去除
+      drop: (() => {
+        const drop: Array<'console' | 'debugger'> = [];
+        env.VITE_BUILD_DROP_CONSOLE === 'true' && drop.push('console');
+        env.VITE_BUILD_DROP_DEBUGGER === 'true' && drop.push('debugger');
+        return drop;
+      })(),
+    },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src'),
+      },
     },
   };
   // 处理production时的config.build.rollupOptions.plugins

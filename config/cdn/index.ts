@@ -1,6 +1,7 @@
 import { UserConfig } from 'vite';
 import production from './production';
 import development from './development';
+// rollup-plugin-external-globals本来这个库没有ts支持会报错，但是tsconfig.node.json没有开严格模式，所以不会报错
 import externalGlobals from 'rollup-plugin-external-globals';
 import { JsDependence } from './interface';
 
@@ -36,7 +37,7 @@ export function cdnHooks(env: ImportMetaEnv) {
     },
     handleProductionCdn(config: UserConfig) {
       if (env.VITE_MODE_NAME === 'production') {
-        config.build.rollupOptions.plugins.push(externalGlobals(global));
+        config.build?.rollupOptions?.plugins?.push(externalGlobals(global));
       }
     },
   };
