@@ -2,6 +2,7 @@ import { defineConfig, loadEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { cdnHooks } from './config/cdn';
 import { createHtmlPlugin as html } from 'vite-plugin-html';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -27,6 +28,11 @@ export default defineConfig(({ mode }) => {
         plugins: [],
       },
       sourcemap: env.VITE_BUILD_SOURCEMAP,
+    },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, 'src'),
+      },
     },
   };
   // 处理production时的config.build.rollupOptions.plugins
