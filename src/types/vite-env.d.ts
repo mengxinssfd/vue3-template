@@ -16,7 +16,7 @@ declare global {
     readonly VITE_BUILD_DROP_CONSOLE: 'true' | void;
     // 移除debugger
     readonly VITE_BUILD_DROP_DEBUGGER: 'true' | void;
-    // sourcemap
+    // sourcemap；开发环境开启less sourcemap，生产环境开启js sourcemap
     readonly VITE_SOURCEMAP: 'true' | void;
   }
 
