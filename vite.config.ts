@@ -48,6 +48,19 @@ export default defineConfig(({ mode }) => {
         '@': resolve(__dirname, 'src'),
       },
     },
+    css: {
+      // dev时生成sourcemap
+      devSourcemap: env.VITE_SOURCEMAP === 'true',
+      preprocessorOptions: {
+        less: {
+          // javascriptEnabled: true,
+          // 这样就能全局使用 src/assets/styles/base.less 定义的 变量
+          // additionalData: `@import "${resolve(__dirname, 'src/assets/styles/base.less')}";`,
+          // build时不能生成sourcemap
+          // sourceMap: {},
+        } as Less.Options,
+      },
+    },
   };
   // 处理production时的config.build.rollupOptions.plugins
   handleProductionCdn(config);
