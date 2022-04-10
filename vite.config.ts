@@ -53,9 +53,11 @@ export default defineConfig(({ mode }) => {
       devSourcemap: env.VITE_SOURCEMAP === 'true',
       preprocessorOptions: {
         less: {
-          // javascriptEnabled: true,
-          // 这样就能全局使用 src/assets/styles/base.less 定义的 变量
-          // additionalData: `@import "${resolve(__dirname, 'src/assets/styles/base.less')}";`,
+          // 开启less的
+          javascriptEnabled: true,
+          // 这样就能全局使用 src/common/styles/variable.less 定义的 变量
+          // 注意⚠️：只导入变量或函数，公共类不要这样导入，建议用@improt的方式导入，否则每一个scoped组件都会生成一个公共类
+          additionalData: `@import "${resolve(__dirname, 'src/common/styles/variable.less')}";`,
           // build时不能生成sourcemap
           // sourceMap: {},
         } as Less.Options,
