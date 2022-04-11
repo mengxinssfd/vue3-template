@@ -49,12 +49,12 @@ label {
 }
 
 code {
-  display: inline-flex;
   align-items: center;
   user-select: auto;
   background-color: #eee;
   padding: 2px 4px;
   border-radius: 4px;
-  color: @theme-color;
+  color: red;
+  display: inline-flex;
 }
 </style>
