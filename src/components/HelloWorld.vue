@@ -31,7 +31,7 @@ const count = ref(0);
   </p>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 // .hello-world .antd-1会被tree shaking掉
 .hello-world {
   font-size: 200px;
@@ -54,7 +54,7 @@ code {
   background-color: #eee;
   padding: 2px 4px;
   border-radius: 4px;
-  color: red;
+  color: $theme-color;
   display: inline-flex;
 }
 </style>

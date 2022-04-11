@@ -53,12 +53,10 @@ export default defineConfig(({ mode }) => {
       // dev时生成sourcemap
       devSourcemap: env.VITE_SOURCEMAP === 'true',
       preprocessorOptions: {
-        less: {
-          // 开启less的
-          javascriptEnabled: true,
-          // 这样就能全局使用 src/common/styles/variable.less 定义的 变量
+        scss: {
+          // 这样就能全局使用 src/common/styles/variable.scss 定义的 变量
           // 注意⚠️：只导入变量或函数，公共类不要这样导入，建议用@improt的方式导入，否则每一个scoped组件都会生成一个公共类
-          additionalData: `@import "${resolve(__dirname, 'src/common/styles/variable.less')}";`,
+          additionalData: `@import "${resolve(__dirname, 'src/common/styles/variable.scss')}";`,
           // build时不能生成sourcemap
           // sourceMap: {},
         } as Less.Options,
