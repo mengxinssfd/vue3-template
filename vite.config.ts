@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import { cdnHooks } from './config/cdn';
 import { createHtmlPlugin as html } from 'vite-plugin-html';
 import { resolve } from 'path';
+import createPostcssConfig from './config/postcss.config';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -62,6 +63,7 @@ export default defineConfig(({ mode }) => {
           // sourceMap: {},
         } as Less.Options,
       },
+      postcss: createPostcssConfig(env),
     },
   };
   // 处理production时的config.build.rollupOptions.plugins

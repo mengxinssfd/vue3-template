@@ -32,6 +32,13 @@ const count = ref(0);
 </template>
 
 <style scoped lang="less">
+// .hello-world .antd-1会被tree shaking掉
+.hello-world {
+  font-size: 200px;
+}
+.antd-1 {
+  color: red;
+}
 a {
   color: #42b983;
 }
@@ -42,6 +49,9 @@ label {
 }
 
 code {
+  display: inline-flex;
+  align-items: center;
+  user-select: auto;
   background-color: #eee;
   padding: 2px 4px;
   border-radius: 4px;
