@@ -18,6 +18,8 @@ declare global {
     readonly VITE_BUILD_DROP_DEBUGGER: 'true' | void;
     // sourcemap；开发环境开启less sourcemap，生产环境开启js sourcemap
     readonly VITE_SOURCEMAP: 'true' | void;
+    // 是否使用rem
+    readonly VITE_USE_REM: 'true' | void;
   }
 
   interface ImportMeta {
