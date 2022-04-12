@@ -42,19 +42,17 @@ const count = ref(0);
 a {
   color: #42b983;
 }
-
 label {
   margin: 0 0.5em;
   font-weight: bold;
 }
-
 code {
+  display: inline-flex;
   align-items: center;
-  user-select: auto;
-  background-color: #eee;
   padding: 2px 4px;
   border-radius: 4px;
   color: $theme-color;
-  display: inline-flex;
+  background-color: #eeeeee;
+  user-select: auto;
 }
 </style>

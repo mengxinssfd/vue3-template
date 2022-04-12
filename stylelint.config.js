@@ -17,6 +17,19 @@ module.exports = {
     //        message: '命名规范不符合',
     //      },
     //    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        ignoreAtRules: [
+          // 忽略tailwindcss的属性
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+        ],
+      },
+    ],
     'at-rule-empty-line-before': null,
     'no-descending-specificity': null,
 

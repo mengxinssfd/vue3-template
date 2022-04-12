@@ -5,10 +5,10 @@ import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <img class="flex items-center justify-around rounded-xl" alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 
 <style lang="scss">
-@import 'common/styles/base.scss';
+@import "common/styles/base";
 </style>
