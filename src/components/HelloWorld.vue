@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useTestStore } from '@/store/test';
 
 defineProps<{ msg: string }>();
+
+const store = useTestStore();
+
+setTimeout(() => {
+  store.setName('hello', 'pinia');
+}, 2000);
 
 const count = ref(0);
 </script>
@@ -29,6 +36,12 @@ const count = ref(0);
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
+  <p>
+    {{ store.firstName }} <br />
+    {{ store.lastName }} <br />
+    {{ store.fullName }} <br />
+  </p>
+  <button @click="store.count++">{{ store.count }}</button>
 </template>
 
 <style scoped lang="scss">
