@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Qs from 'qs';
-import type { ResType } from './types';
+import type { CustomConfig, ResType, StatusHandlers } from './types';
 
 // RequestWrapper 请求封装
 export function axiosFactory(
