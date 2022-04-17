@@ -20,6 +20,9 @@ declare global {
     readonly VITE_SOURCEMAP: 'true' | void;
     // 是否使用rem
     readonly VITE_USE_REM: 'true' | void;
+    // 是否使用proxy
+    readonly VITE_USE_PROXY: 'true' | void;
+    readonly VITE_PROXY_TARGET: string;
   }
 
   interface ImportMeta {

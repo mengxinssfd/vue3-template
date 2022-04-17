@@ -15,13 +15,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "ts-check": "vue-tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky install",
     "husky-msg-init": "husky add .husky/pre-commit \"npx lint-staged --allow-empty \"$1\"\"&yarn husky add .husky/commit-msg \"npx commitlint --edit \"$1\"\""
   },
   "dependencies": {
     "vue": "^3.2.25",
-    "pinia": "^2.0.0-rc.10"
+    "pinia": "^2.0.0-rc.10",
+    "axios": "^0.26.1",
+    "qs": "^6.10.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
