@@ -64,6 +64,23 @@ export default defineConfig(({ mode }) => {
       },
       postcss: createPostcssConfig(env),
     },
+    server: {
+      // port: 3000,
+      open: false, //自动打开
+      base: './ ', //生产环境路径
+      proxy:
+        env.VITE_USE_PROXY === 'true'
+          ? {
+              // 本地开发环境通过代理实现跨域，生产环境使用 nginx 转发
+              // 正则表达式写法
+              '^/api': {
+                target: env.VITE_PROXY_TARGET, // 后端服务实际地址
+                changeOrigin: true, //开启代理
+                rewrite: (path) => path.replace(/^\/api/, ''),
+              },
+            }
+          : undefined,
+    },
   };
   // 处理production时的config.build.rollupOptions.plugins
   handleProductionCdn(config);
