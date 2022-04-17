@@ -1,28 +1,23 @@
-// CodeHandler
 import type { AxiosResponse } from 'axios';
 import type { ResType } from '@/http/ResType';
 
-export type CodeHandler = (
+export type StatusHandler = (
   res: AxiosResponse<ResType<any>>,
   data: ResType<any>,
   requestConfig: CustomConfig,
 ) => any;
-// CodeHandlerItem
-export interface CodeHandlerItem {
-  msg: string;
-  handler: CodeHandler;
-}
+
 // StatusHandlers
-export type StatusHandlers = Record<number, CodeHandlerItem> & { default?: CodeHandlerItem };
+export type StatusHandlers = Record<number, StatusHandler> & { default?: StatusHandler };
 // CustomConfig
 export interface CustomConfig<T extends boolean = false> {
   returnRes?: T; // 返回res
   silent?: boolean; // 报错不弹窗
-  //
-  requestCodeHandlers?: StatusHandlers;
+  statusHandlers?: StatusHandlers;
+  useCache?: boolean | { timeout: number };
 }
 
-export declare interface ResType<T = never> {
+export interface ResType<T = never> {
   code: number;
   msg: string;
   data: T;
