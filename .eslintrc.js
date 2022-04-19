@@ -3,7 +3,7 @@ module.exports = {
   parser: 'vue-eslint-parser',
   /* 优先级低于parse的语法解析配置 */
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
   },
   extends: [
     'plugin:vue/vue3-recommended',
@@ -17,19 +17,21 @@ module.exports = {
     'no-var': 'error',
     // 优先使用 interface 而不是 type
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-    '@typescript-eslint/no-explicit-any': "off",
-    '@typescript-eslint/explicit-module-boundary-types': "off",
-    '@typescript-eslint/ban-types': "off",
-    '@typescript-eslint/no-unused-vars': "error",
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     // 下面两个规则可以去 参照4 规则看详细介绍
-    'vue/html-indent': ['error', 2,
+    'vue/html-indent': [
+      'error',
+      2,
       {
         attribute: 1,
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
-        ignores: []
-      }
+        ignores: [],
+      },
     ],
     'vue/max-attributes-per-line': [
       'error',
@@ -39,8 +41,9 @@ module.exports = {
         },
         multiline: {
           max: 1,
-        }
-      }
+        },
+      },
     ],
+    'vue/multi-word-component-names': 'warn',
   },
 };
