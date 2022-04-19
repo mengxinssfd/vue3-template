@@ -1,5 +1,5 @@
 // import { Post } from '@/http/ins/primary/instance';
-import PrimaryRequest from '@/http/ins/primary';
+import PrimaryRequest from '@/http/primary';
 const { post, get } = PrimaryRequest;
 export default class User {
   username!: string;

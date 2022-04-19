@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import User from '@/api/user';
+import User from '@/api/User';
 import Token from '@/common/ts/Token';
 
 const useUserStore = defineStore({
