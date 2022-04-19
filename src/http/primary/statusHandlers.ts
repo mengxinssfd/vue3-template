@@ -1,5 +1,4 @@
-import { HttpStatus } from '../../HttpStatus';
-import type { StatusHandler, StatusHandlers } from '../../types';
+import { StatusHandler, StatusHandlers, HttpStatus } from '@mxssfd/axios-wrapper';
 import Token from '@/common/ts/Token';
 
 // 通用错误Handler
@@ -24,7 +23,7 @@ export const statusHandlers: StatusHandlers = {
     }
     return errorHandler(res, data, customConfig);
   },
-  [HttpStatus.RESET_TOKEN]: (res, data, customConfig) => {
+  207: (res, data, customConfig) => {
     data.data.token && Token.set(data.data.token);
     return customConfig.returnRes ? res : data;
   },

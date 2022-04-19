@@ -24,7 +24,8 @@
     "vue": "^3.2.25",
     "pinia": "^2.0.0-rc.10",
     "axios": "^0.26.1",
-    "qs": "^6.10.3"
+    "qs": "^6.10.3",
+    "@mxssfd/axios-wrapper": "^0.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
