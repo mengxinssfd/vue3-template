@@ -9,6 +9,9 @@ export default class User {
     return post<{ token: string }>('/user/login', data);
   }
   static getSelf() {
-    return get<{ user: User }>('/user/self', {}, { silent: true });
+    const req = get<{ user: User }>('/user/self', {}, { silent: true });
+    const cancel = PrimaryRequest.ins.cancelCurrentRequest;
+    setTimeout(() => cancel('cancel test'));
+    return req;
   }
 }

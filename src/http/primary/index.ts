@@ -1,17 +1,17 @@
 import { statusHandlers } from '@/http/primary/statusHandlers';
 import { AxiosRequestHeaders } from 'axios';
 import Token from '@/common/ts/Token';
-import { AxiosWrapper } from '@mxssfd/axios-wrapper';
+import { AxiosRequestTemplate } from 'request-template';
 
 /**
  * 主域名请求类
  */
-export default class PrimaryRequest extends AxiosWrapper {
+export default class PrimaryRequest extends AxiosRequestTemplate {
   static readonly ins = new PrimaryRequest();
-  static readonly get = AxiosWrapper.methodFactory('get', PrimaryRequest.ins);
-  static readonly post = AxiosWrapper.methodFactory('post', PrimaryRequest.ins);
-  static readonly delete = AxiosWrapper.methodFactory('delete', PrimaryRequest.ins);
-  static readonly patch = AxiosWrapper.methodFactory('patch', PrimaryRequest.ins);
+  static readonly get = PrimaryRequest.ins.methodFactory('get');
+  static readonly post = PrimaryRequest.ins.methodFactory('post');
+  static readonly delete = PrimaryRequest.ins.methodFactory('delete');
+  static readonly patch = PrimaryRequest.ins.methodFactory('patch');
 
   private constructor() {
     super({ baseURL: import.meta.env.VITE_BASE_URL }, { statusHandlers });

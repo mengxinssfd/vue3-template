@@ -1,8 +1,8 @@
-import { StatusHandler, StatusHandlers, HttpStatus } from '@mxssfd/axios-wrapper';
+import { StatusHandler, StatusHandlers, HttpStatus, CustomConfig } from 'request-template';
 import Token from '@/common/ts/Token';
 
 // 通用错误Handler
-const errorHandler: StatusHandler = (res, data, customConfig) => {
+const errorHandler: StatusHandler<CustomConfig> = (res, data, customConfig) => {
   if (!customConfig.silent) {
     // todo: 提示
     // ElMessage({ type: 'error', message: data.msg })
