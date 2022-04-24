@@ -4,6 +4,7 @@ import { cdnHooks } from './config/cdn';
 import { createHtmlPlugin as html } from 'vite-plugin-html';
 import { resolve } from 'path';
 import createPostcssConfig from './config/postcss.config';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -22,6 +23,10 @@ export default defineConfig(({ mode }) => {
           },
         },
         minify: true,
+      }),
+      visualizer((opts) => {
+        // 会打包到dist/analyze.html
+        return { filename: resolve(opts.dir, 'analyze.html') };
       }),
     ],
     build: {
