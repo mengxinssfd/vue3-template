@@ -56,8 +56,7 @@ export default defineConfig(({ mode }) => {
     },
     css: {
       // dev时生成sourcemap
-      // 目前tailwindcss和devSourcemap有冲突
-      // devSourcemap: env.VITE_SOURCEMAP === 'true',
+      devSourcemap: env.VITE_SOURCEMAP === 'true',
       preprocessorOptions: {
         scss: {
           // 这样就能全局使用 src/common/styles/variable.scss 定义的 变量
