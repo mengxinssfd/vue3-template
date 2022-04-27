@@ -1,6 +1,6 @@
 <template>
   <img
-    class="flex items-center justify-around rounded-xl"
+    class="flex items-center justify-around rounded-xl animate__shakeX animate__animated animate__infinite"
     alt="Vue logo"
     src="../../assets/logo.png"
   />
