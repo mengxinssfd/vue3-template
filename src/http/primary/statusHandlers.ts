@@ -2,7 +2,7 @@ import { StatusHandler, StatusHandlers, HttpStatus, CustomConfig } from 'request
 import Token from '@/common/ts/Token';
 
 // 通用错误Handler
-const errorHandler: StatusHandler<CustomConfig> = (res, data, customConfig) => {
+const errorHandler: StatusHandler<CustomConfig> = ({ customConfig }, res, data) => {
   if (!customConfig.silent) {
     // todo: 提示
     // ElMessage({ type: 'error', message: data.msg })
@@ -14,20 +14,20 @@ const errorHandler: StatusHandler<CustomConfig> = (res, data, customConfig) => {
 
 // enum StatusCode的方式有问题  直接写好了
 export const statusHandlers: StatusHandlers = {
-  [HttpStatus.UNAUTHORIZED]: (res, data, customConfig) => {
+  [HttpStatus.UNAUTHORIZED]: (ctx, res, data) => {
     if (res.status === HttpStatus.UNAUTHORIZED) {
       // todo 保存至store
       // Store.commit('clearUser');
       console.log('清理掉保存的用户信息');
       Token.clear();
     }
-    return errorHandler(res, data, customConfig);
+    return errorHandler(ctx, res, data);
   },
-  207: (res, data, customConfig) => {
+  207: ({ customConfig }, res, data) => {
     data.data.token && Token.set(data.data.token);
     return customConfig.returnRes ? res : data;
   },
-  [HttpStatus.OK]: (res, data, customConfig) => {
+  [HttpStatus.OK]: ({ customConfig }, res, data) => {
     return customConfig.returnRes ? res : data;
   },
   default: errorHandler,

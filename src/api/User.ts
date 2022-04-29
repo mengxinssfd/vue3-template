@@ -11,7 +11,7 @@ export default class User {
   static getSelf() {
     const req = get<{ user: User }>('/user/self', {}, { silent: true });
     const cancel = PrimaryRequest.ins.cancelCurrentRequest;
-    setTimeout(() => cancel('cancel test'));
+    setTimeout(() => cancel?.('cancel test'));
     return req;
   }
 }
