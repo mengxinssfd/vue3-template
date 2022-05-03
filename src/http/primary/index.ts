@@ -8,13 +8,16 @@ import { AxiosRequestTemplate } from 'request-template';
  */
 export default class PrimaryRequest extends AxiosRequestTemplate {
   static readonly ins = new PrimaryRequest();
-  static readonly get = PrimaryRequest.ins.methodFactory('get');
-  static readonly post = PrimaryRequest.ins.methodFactory('post');
-  static readonly delete = PrimaryRequest.ins.methodFactory('delete');
-  static readonly patch = PrimaryRequest.ins.methodFactory('patch');
+  static readonly get = PrimaryRequest.ins.simplifyMethodFactory('get');
+  static readonly post = PrimaryRequest.ins.simplifyMethodFactory('post');
+  static readonly delete = PrimaryRequest.ins.simplifyMethodFactory('delete');
+  static readonly patch = PrimaryRequest.ins.simplifyMethodFactory('patch');
 
   private constructor() {
-    super({ baseURL: import.meta.env.VITE_BASE_URL }, { statusHandlers });
+    super({
+      requestConfig: { baseURL: import.meta.env.VITE_BASE_URL },
+      customConfig: { statusHandlers },
+    });
   }
 
   protected setInterceptors() {

@@ -14,10 +14,14 @@ const useUserStore = defineStore({
       this.getMe();
     },
     async getMe() {
-      const {
-        data: { user },
-      } = await User.getSelf();
-      this.$state = user;
+      try {
+        const {
+          data: { user },
+        } = await User.getSelf();
+        this.$state = user;
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 });
