@@ -18,7 +18,12 @@
     "ts-check": "vue-tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky install",
-    "husky-msg-init": "husky add .husky/pre-commit \"npx lint-staged --allow-empty \"$1\"\"&yarn husky add .husky/commit-msg \"npx commitlint --edit \"$1\"\""
+    "husky-msg-init": "husky add .husky/pre-commit \"npx lint-staged --allow-empty \"$1\"\"&yarn husky add .husky/commit-msg \"npx commitlint --edit \"$1\"\"",
+    "eslint": "eslint ./",
+    "prettier-fix": "prettier src config --write",
+    "prettier-check": "prettier ./ --check",
+    "lint-check": "run-p eslint prettier-check",
+    "check-all": "run-p lint-check type-check"
   },
   "dependencies": {
     "animate.css": "^4.1.1",

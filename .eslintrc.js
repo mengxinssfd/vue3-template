@@ -1,4 +1,9 @@
 module.exports = {
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
   /* 指定如何解析语法。*/
   parser: 'vue-eslint-parser',
   /* 优先级低于parse的语法解析配置 */
@@ -21,6 +26,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
     // 下面两个规则可以去 参照4 规则看详细介绍
     'vue/html-indent': [
       'error',

@@ -1,7 +1,9 @@
 # vue3-template
-vue3项目模板
+
+vue3 项目模板
 
 已实现
+
 - [x] vite
 - [x] eslint
 - [x] tslint
@@ -10,10 +12,10 @@ vue3项目模板
 - [x] commitlint
 - [x] tailwindcss
 - [x] scss/sass
-- [x] env环境变量
-- [x] 打包cdn
+- [x] env 环境变量
+- [x] 打包 cdn
 - [x] pinia
 - [x] router
 - [x] 打包分析
 - [x] postcss
-- [x] axios请求封装
+- [x] axios 请求封装

@@ -56,7 +56,7 @@ export default function createPostcssConfig(env: ImportMetaEnv): Postcss.Process
       // 可优化点；如果以后热更新慢，autoprefixer可以build时再使用，现在开启是保持跟生产环境一致
       require('autoprefixer')(),
       // require("cssnano")(), // 压缩css，vite会压缩不需要再配置
-      require('tailwindcss')()
+      require('tailwindcss')(),
     ],
   };
   handleRem(env, config.plugins);
