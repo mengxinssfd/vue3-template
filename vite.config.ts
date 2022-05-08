@@ -24,10 +24,14 @@ export default defineConfig(({ mode }) => {
         },
         minify: true,
       }),
-      visualizer((opts) => {
+      {
         // 会打包到dist/analyze.html
-        return { filename: resolve(opts.dir, 'analyze.html') };
-      }),
+        ...visualizer({ filename: 'dist/analyze.html' }),
+        apply(config, { mode }) {
+          // 只会在mode为analyze时才会使用该插件
+          return mode === 'analyze';
+        },
+      },
     ],
     build: {
       rollupOptions: {
