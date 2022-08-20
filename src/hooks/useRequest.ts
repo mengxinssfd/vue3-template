@@ -17,6 +17,41 @@ type Options<A extends string, D extends object | void = void> = D extends void
       dataDriver?: boolean;
     };
 
+/**
+ * 请求hooks
+ *
+ * @example
+ *
+ * // 手动请求 request不带参数
+ * const res = useRequest(User.getSelf, { requestAlias: 'getSelf', immediate: true });
+ * res.getSelf();
+ * console.log(res.data.value?.user);
+ *
+ * const formModel = reactive({ username: '', password: '' });
+ *
+ * // 手动请求 request带参数
+ * const res2 = useRequest(User.login);
+ * res2.request(formModel);
+ * console.log(res2.data.value?.token);
+ *
+ * formModel.username = '1';
+ * formModel.password = '1';
+ *
+ * // 数据驱动
+ * const res3 = useRequest(User.login, {
+ *   data: formModel,
+ *   immediate: true,
+ *   dataDriver: true,
+ * });
+ * // res3.request(formModel); // error Property 'request' does not exist
+ * // 修改formModel自动触发请求
+ * formModel.username = '2';
+ * formModel.password = '2';
+ * console.log(res3.data.value?.token);
+ *
+ * @param  requestFn
+ * @param  options
+ */
 export function useRequest<
   REQ extends FN,
   ALIAS extends string = 'request',
