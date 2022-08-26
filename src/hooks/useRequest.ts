@@ -51,21 +51,28 @@ type Options<A extends string, D extends object | void = void> = D extends void
  *
  * @param  requestFn
  * @param  options
+ * @param  defaultData
  */
 export function useRequest<
   REQ extends FN,
   ALIAS extends string = 'request',
   DATA extends object | void = void,
->(requestFn: REQ, options: Options<ALIAS, DATA> = {} as any) {
+>(
+  requestFn: REQ,
+  options: Options<ALIAS, DATA> = {} as any,
+  defaultData: Awaited<ReturnType<REQ>>['data'] | null = null,
+) {
   const state = reactive<State<REQ>>({
     loading: false,
-    data: null,
+    data: defaultData,
     error: null,
   });
 
   const refs = toRefs(state);
 
-  const request = (...args: any) => {
+  const request = (...args: any[]) => {
+    // computed变量不能JSON.stringfy
+    args = args.map((item) => (isRef(item) ? item.value : item));
     state.loading = true;
     requestFn(...args)
       .then(
