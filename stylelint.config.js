@@ -34,7 +34,7 @@ module.exports = {
     'no-descending-specificity': null,
 
     'function-url-quotes': 'always',
-    'string-quotes': 'double',
+    'string-quotes': 'single', // double跟prettier冲突
     indentation: 2,
     'unit-case': null,
     'color-hex-case': 'lower',
