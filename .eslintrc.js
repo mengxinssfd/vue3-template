@@ -4,6 +4,10 @@ module.exports = {
     node: true,
     es6: true,
   },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+  },
   /* 指定如何解析语法。*/
   parser: 'vue-eslint-parser',
   /* 优先级低于parse的语法解析配置 */
