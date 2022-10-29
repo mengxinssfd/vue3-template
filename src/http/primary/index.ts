@@ -1,17 +1,17 @@
 import { statusHandlers } from '@/http/primary/statusHandlers';
 import { AxiosRequestHeaders } from 'axios';
 import Token from '@/common/ts/Token';
-import { AxiosRequestTemplate } from 'request-template';
+import { AxiosRequestTemplate } from '@request-template/axios';
 
 /**
  * 主域名请求类
  */
 export default class PrimaryRequest extends AxiosRequestTemplate {
   static readonly ins = new PrimaryRequest();
-  static readonly get = PrimaryRequest.ins.simplifyMethodFactory('get');
-  static readonly post = PrimaryRequest.ins.simplifyMethodFactory('post');
-  static readonly delete = PrimaryRequest.ins.simplifyMethodFactory('delete');
-  static readonly patch = PrimaryRequest.ins.simplifyMethodFactory('patch');
+  static readonly Get = PrimaryRequest.ins.simplifyMethodFactory('get');
+  static readonly Post = PrimaryRequest.ins.simplifyMethodFactory('post');
+  static readonly Delete = PrimaryRequest.ins.simplifyMethodFactory('delete');
+  static readonly Patch = PrimaryRequest.ins.simplifyMethodFactory('patch');
 
   private constructor() {
     super({

@@ -23,12 +23,13 @@ export const statusHandlers: StatusHandlers = {
     }
     return errorHandler(ctx, res, data);
   },
-  207: ({ customConfig }, res, data) => {
+  207: (_ctx, _res, data) => {
     data.data.token && Token.set(data.data.token);
-    return customConfig.returnRes ? res : data;
+    // return customConfig.returnRes ? res : data;
   },
-  [HttpStatus.OK]: ({ customConfig }, res, data) => {
-    return customConfig.returnRes ? res : data;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  [HttpStatus.OK]: (/*{ customConfig }, res, data*/) => {
+    // return customConfig.returnRes ? res : data;
   },
   default: errorHandler,
 };

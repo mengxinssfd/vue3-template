@@ -3,11 +3,12 @@ import { ref } from 'vue';
 import { useTestStore } from '@/store/test';
 
 defineProps<{ msg: string }>();
-
+defineEmits(['change']);
 const store = useTestStore();
 
 setTimeout(() => {
   store.setName('hello', 'pinia');
+  // emits('change', 2);
 }, 2000);
 
 const count = ref(0);
